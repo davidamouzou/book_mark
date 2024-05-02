@@ -55,3 +55,5 @@ struct BadgeBackground: View {
 #Preview {
     BadgeBackground()
 }
+
+
