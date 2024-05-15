@@ -17,12 +17,18 @@ struct BookDetail: View {
                 Image(bookMark.image)
                     .resizable()
                     .scaledToFit()
+                    .clipShape(RoundedRectangle(cornerSize: /*@START_MENU_TOKEN@*/CGSize(width: 20, height: 10)/*@END_MENU_TOKEN@*/))
+                    .padding(.horizontal, 12)
                 
-                VStack(alignment: .leading) {
-                    Text(bookMark.name)
-                        .font(.largeTitle)
-                    Text("\(bookMark.authorName) - \(bookMark.createA.year!)").italic()
-                        .foregroundStyle(.gray)
+                HStack {
+                    CircleAvatar(image: bookMark.authorProfile, raduis: 54)
+                    VStack(alignment: .leading) {
+                        Text(bookMark.name)
+                            .font(.title)
+                        Text("\(bookMark.authorName) - \(bookMark.createA.year!)").italic()
+                            .foregroundStyle(.gray)
+                    }
+                    
                 }
                 .padding(.horizontal)
                 
@@ -51,5 +57,6 @@ struct BookDetail: View {
 #Preview {
     BookDetail(bookMark: bookMarks[0])
 }
+
 
 

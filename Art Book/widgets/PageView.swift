@@ -1,18 +1,24 @@
-//
-//  PageView.swift
-//  Art Book
-//
-//  Created by David Amouzou on 03/05/2024.
-//
-
 import SwiftUI
 
-struct PageView: View {
+
+struct PageView<Page: View>: View {
+    var pages: [Page]
+    @State private var currentPage = 0
+
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack(alignment: .bottomTrailing) {
+            PageViewController(pages: pages, currentPage: $currentPage)
+            PageControl(numberOfPages: pages.count, currentPage: $currentPage)
+                .frame(width: CGFloat(pages.count * 18))
+                .padding(.trailing)
+        }
+        .aspectRatio(3 / 2, contentMode: .fit)
     }
 }
 
+
 #Preview {
-    PageView()
+    PageView(pages: bookMarks
+        .map { CarouselImage(bookMark: $0) })
 }

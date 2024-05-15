@@ -1,18 +1,21 @@
-//
-//  PartieView.swift
-//  Art Book
-//
-//  Created by David Amouzou on 15/05/2024.
-//
-
 import SwiftUI
 
 struct PartieView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+    let number: Int
+    @Binding var selectedPartie: Int
 
-#Preview {
-    PartieView()
+    var body: some View {
+        VStack {
+            Text("Partie \(number)")
+                .padding(.horizontal)
+                .padding(.vertical, 12)
+                .foregroundStyle(selectedPartie == number ? .booktext : .bookprimary)
+        }
+        .background(selectedPartie == number ? Color.bookprimary : Color.bookprimary.opacity(0.1))
+        .clipShape(RoundedRectangle(cornerSize: CGSize(width: 8, height: 10)))
+        .onTapGesture {
+            selectedPartie = number
+        }
+        .padding(.leading, 8)
+    }
 }

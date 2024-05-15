@@ -8,11 +8,18 @@
 import SwiftUI
 
 struct CircleAvatar: View {
+    var image = "avatar"
+    var raduis: Double = 36
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Image(image)
+            .resizable()
+            .renderingMode(.original)
+            .aspectRatio(contentMode: .fill)
+            .frame(width: raduis, height: raduis)
+            .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
     }
 }
 
 #Preview {
-    CircleAvatar()
+    CircleAvatar(image: "avatar", raduis: 36)
 }

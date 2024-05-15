@@ -12,39 +12,37 @@ struct BookCard: View {
     var padding = 12.0
     
     var body: some View {
-        ZStack(alignment: .bottomLeading) {
-            Image(bookMark.image)
-                .renderingMode(.original)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .cornerRadius(12.0)
-            HStack {
-                Image(bookMark.authorProfile)
-                    .resizable()
-                    .renderingMode(.original)
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 36, height: 36)
-                    .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
-                VStack(alignment: .leading) {
-                    Text(bookMark.name)
-                        .foregroundStyle(Color.black)
-                    Text("\(bookMark.authorName) ⏤ \(bookMark.createA.year!)")
-                        .foregroundStyle(Color.gray).italic().font(.subheadline)
+       
+            NavigationLink(destination: BookDetail(bookMark: bookMark)){
+                ZStack(alignment: .bottomLeading) {
+                    Image(bookMark.image)
+                        .renderingMode(.original)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .cornerRadius(12.0)
+                    HStack {
+                        CircleAvatar(image: bookMark.authorProfile)
+                        VStack(alignment: .leading) {
+                            Text(bookMark.name)
+                                .foregroundStyle(Color.black)
+                            Text("\(bookMark.authorName) - \(bookMark.createA.year!)")
+                                .foregroundStyle(Color.gray).italic().font(.subheadline)
+                        }
+                        .padding(.trailing, 8.0)
+                        
+                    }
+                    .padding(.all, 4.0)
+                    .background(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=View@*/Color.white/*@END_MENU_TOKEN@*/)
+                    .cornerRadius(100.0)
+                    .offset(x: 12, y: -12)
+                    
                 }
-                .padding(.trailing, 8.0)
-                
-            }
-            .padding(.all, 4.0)
-            .background(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=View@*/Color.white/*@END_MENU_TOKEN@*/)
-            .cornerRadius(100.0)
-            .offset(x: 12, y: -12)
-            
+                .padding(.horizontal, padding)
         }
-        .padding(.horizontal, padding)
-        
     }
 }
 
 #Preview {
-    BookCard(bookMark: bookMarks[0])   
+    BookCard(bookMark: bookMarks[0])
 }
+
