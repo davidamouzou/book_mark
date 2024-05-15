@@ -34,8 +34,4 @@ Pour installer **Art Book** sur votre appareil iOS, suivez les étapes suivantes
 3. Connectez votre appareil iOS et sélectionnez-le comme périphérique de déploiement.
 4. Appuyez sur le bouton "Run" dans Xcode pour lancer l'application sur votre appareil.
 
-## Contributeurs
-
-- David Amouzou
-
 
